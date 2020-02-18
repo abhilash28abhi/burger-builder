@@ -2,15 +2,16 @@
 import React, {Component} from 'react';
 import Aux from '../../hoc/Aux';
 import Burger from '../../components/Burger/Burger';
+import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 
 class BurgerBuilder extends Component {
     //object with ingredient and their counts
     state = {
         ingredients : {
-            'bacon' : 0,
-            'salad' : 0,
-            'cheese' : 0,
-            'meat' : 0
+            'bacon' : 1,
+            'salad' : 1,
+            'cheese': 1,
+            'meat'  : 1
         }
     }
 
@@ -18,7 +19,7 @@ class BurgerBuilder extends Component {
         return (
             <Aux>
                 <Burger ingredients = {this.state.ingredients}/>
-                <div>Build Controls</div>
+                <BuildControls/>
             </Aux>
         );
     }
