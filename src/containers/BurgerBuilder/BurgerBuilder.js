@@ -28,6 +28,7 @@ class BurgerBuilder extends Component {
 
     //logic to update the inital state of ingredients from firebase
     componentDidMount() {
+        console.log(this.props);
         axios.get('https://react-my-burger-5d37d.firebaseio.com/ingredients.json')
             .then(response => {
                 this.setState({ingredients: response.data});
@@ -101,30 +102,17 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
-        this.setState({loading: true});
-        const order = {
-            ingredients : this.state.ingredients,
-            orderPrice : this.state.totalPrice,
-            customer : {
-                name: 'Abhilash',
-                address : {
-                    street: 'Test add',
-                    zipcode: '74003',
-                    country: 'India'
-                },
-                email: 'test@test.com'
-            },
-            deliveryMethod: 'Super quick'
-        };
-
-        //only for firebase add .json
-        axios.post('/orders.json', order)
-            .then(response => {
-                this.setState({loading: false, purchasing: false});
-            })
-            .catch(error => {
-                this.setState({loading: false, purchasing: false});
-            });
+        //logic to redirect to /checkout page with encode ingredients value
+        const queryParams = [];
+        for (let ing in this.state.ingredients) {
+            queryParams.push(encodeURIComponent(ing) + '=' + encodeURIComponent(this.state.ingredients[ing]));
+        }
+        queryParams.push('price=' + this.state.totalPrice);
+        const queryString = queryParams.join('&');
+        this.props.history.push({
+            pathname: '/checkout',
+            search: '?' + queryString
+        });
     }
 
     render () {

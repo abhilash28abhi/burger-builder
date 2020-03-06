@@ -5,7 +5,7 @@ import Button from '../../UI/Button/Button';
 class OrderSummary extends Component {
 
     //Only for debugging purpose of the app performance we made it a class component
-    componentWillUpdate () {
+    UNSAFE_componentWillUpdate () {
         console.log('OrderSummary componentWillUpdate called...');
     }
 
