@@ -15,7 +15,7 @@ Steps:
 7.  If you are using {} braces as function body while writing the component, then you must use return statement to return the JSX body, else use () only without the need of return statement.
 8.  With media queries we can override the base css style for an element. In short to achieve responsiveness.
 9.  Use axios NPM package to make HTTP calls:
-    npm install axios
+    `npm install axios`
 10. For Routing use below npm package:
     npm install react-router-dom
 11. For Redux use:
