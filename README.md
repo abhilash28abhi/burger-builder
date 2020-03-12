@@ -9,8 +9,8 @@ Steps:
 3.  To create css modules for the components:</br>
     `npm run eject`
 4.  Add these properties in webpack config for dev and production for dynamic creation of class names under options property:</br>
-                  ```modules : true ```</br>
-                  ```localIdentName: [name]__[local]__[hash:base64:5]```
+         `modules : true `</br>
+`localIdentName: [name]__[local]__[hash:base64:5]`
 5.  To use propTypes we need to install the proptypes package using below command:</br>
     `npm install prop-types`
 6.  Use Aux for MAC and Auxiliary for windows.
