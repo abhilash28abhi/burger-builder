@@ -2,26 +2,9 @@ import React, {Component} from 'react';
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 import ContactData from '../Checkout/ContactData/ContactData';
 import {Route} from 'react-router-dom';
+import { connect} from 'react-redux'
 
 class Checkout extends Component {
-    state = {
-        ingredients : null,
-        totalPrice : 0
-    }
-
-    UNSAFE_componentWillMount() {
-        const query = new URLSearchParams(this.props.location.search);
-        const ingredients = {};
-        let price = 0;
-        for (let i of query.entries()) {
-            if (i[0] === 'price') {
-                price = i[1];
-            } else {
-                ingredients[i[0]] = +i[1];
-            }
-        }
-        this.setState({ingredients:ingredients, totalPrice: price});
-    }
 
     checkoutCancelledHandler = () => {
         this.props.history.goBack();
@@ -34,15 +17,22 @@ class Checkout extends Component {
     render () {
         return (
             <div>
-                <CheckoutSummary ingredients={this.state.ingredients}
+                <CheckoutSummary ingredients={this.props.ings}
                 checkoutCancelled={this.checkoutCancelledHandler}
                 checkoutContinued={this.checkoutContinuedHandler}/>
-                <Route path={this.props.match.path + '/contact-data'} render={() => (<ContactData 
-                    ingredients={this.state.ingredients}
-                    price={this.state.totalPrice}/>)}/>
+                <Route path={this.props.match.path + '/contact-data'} component={ContactData}/>
+                {/* <Route path={this.props.match.path + '/contact-data'} render={() => (<ContactData 
+                    ingredients={this.props.ings}
+                    price={this.props.price}/>)}/> */}
             </div>
         );
     }
 }
 
-export default Checkout;
+const mapStateToProps = (state) => {
+    return {
+        ings : state.ingredients,
+    }
+}
+
+export default connect(mapStateToProps) (Checkout);
