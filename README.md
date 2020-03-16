@@ -22,3 +22,5 @@ Steps:
     `npm install react-router-dom`
 11. For Redux use:</br>
     `npm install redux react-redux packages`
+12. To use redux thunk as a middleware for dispatching action creators to use async code:</br>
+    `npm install redux-thunk`
