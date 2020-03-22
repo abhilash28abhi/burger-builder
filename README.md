@@ -24,3 +24,4 @@ Steps:
     `npm install redux react-redux packages`
 12. To use redux thunk as a middleware for dispatching action creators to use async code:</br>
     `npm install redux-thunk`
+13. This application uses firebase for authentication and for as a storage medium without which this app will break.
