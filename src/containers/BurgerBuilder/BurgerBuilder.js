@@ -9,7 +9,7 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import {connect} from 'react-redux';
 import * as burgerBuilderActions from '../../store/actions/index';
 
-class BurgerBuilder extends Component {
+export class BurgerBuilder extends Component {
     state = {
         purchasing: false
     }

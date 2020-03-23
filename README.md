@@ -25,3 +25,5 @@ Steps:
 12. To use redux thunk as a middleware for dispatching action creators to use async code:</br>
     `npm install redux-thunk`
 13. This application uses firebase for authentication and for as a storage medium without which this app will break.
+14. For writing test cases install the below npm packages, the test file should have .test.js extension:</br>
+    `npm install enzyme react-test-renderer enzyme-adapter-react-16`
